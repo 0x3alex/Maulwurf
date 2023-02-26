@@ -1,6 +1,18 @@
 # Maulwurf
  Track and visualize caves in Star Citizen
 
+## Setup
+#### 1. Install python
+#### 2. Install modules
+```py
+pip3 install keyboard
+pip3 install tk
+pip3 install pynput
+pip3 install numpy
+pip3 install matplotlib
+```
+#### 3. Clone this repo
+
 ## Usage
 #### 1. Fly to a cave in Star Citizen
 #### 2. Run "tracker.py" in the console 
