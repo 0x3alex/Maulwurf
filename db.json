@@ -1,0 +1,66 @@
+{
+  "aberdeen": {
+    "rot_speed": 2.5999999,
+    "radius": 274000
+  },
+  "arccorp":{
+    "rot_speed": 3.1099999,
+    "radius": 800000
+  },
+  "arial": {
+    "rot_speed": 5.51000023,
+    "radius": 344500
+  },
+  "calliope": {
+    "rot_speed": 4.59000015,
+    "radius": 240000
+  },
+  "cellin": {
+    "rot_speed": 4.44999981,
+    "radius": 260000
+  },
+  "clio": {
+    "rot_speed": 3.2500000,
+    "radius": 337170
+  },
+  "crusader": {
+    "rot_speed": 5.0999999,
+    "radius": 7450010
+  },
+  "daymar": {
+    "rot_speed": 2.48000002,
+    "radius": 295000
+  },
+  "euterpe": {
+    "rot_speed": 4.28000021,
+    "radius": 213000
+  },
+  "hurston": {
+    "rot_speed": 2.48000002,
+    "radius": 1000000
+  },
+  "ita":{
+    "rot_speed": 4.8499999,
+    "radius": 325000
+  },
+  "lyria": {
+    "rot_speed": 6.42999983,
+    "radius": 223000
+  },
+  "magda": {
+    "rot_speed": 1.94000006,
+    "radius": 340830
+  },
+  "microtech": {
+    "rot_speed": 4.11999989,
+    "radius": 1000000
+  },
+  "wala": {
+    "rot_speed": 6.32000017,
+    "radius": 283000
+  },
+  "yela": {
+    "rot_speed": 1.8200005,
+    "radius": 313000
+  }
+}
