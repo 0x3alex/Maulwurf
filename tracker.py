@@ -3,8 +3,6 @@ from tkinter import Tk
 from pynput.keyboard import KeyCode, Listener
 import time
 
-
-current_GMT = time.gmtime()
 f = open("cave_trace.txt", "a")
 
 
