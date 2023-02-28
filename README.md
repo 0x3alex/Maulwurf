@@ -6,10 +6,11 @@
 #### 2. Install modules
 ```py
 pip3 install keyboard
-pip3 install tk
+pip3 install pyperclip
 pip3 install pynput
 pip3 install numpy
 pip3 install matplotlib
+pip3 install ntplib
 ```
 #### 3. Clone this repo
 

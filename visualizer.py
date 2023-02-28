@@ -41,22 +41,35 @@ c = ntplib.NTPClient()
 response = c.request('europe.pool.ntp.org', version=3)'''
 
 start_t = 1577836800  # can be hardcoded
+
+log = open("output_log.txt", 'a')
+
 #start_t = response.tx_time
 def remove_rotation(coords):
+        log.write("---new coords----\n")
+        log.write("coords " + str(coords) + "\n")
         dateDiff = coords["t"] - start_t
+        log.write("dateDiff " + str(dateDiff) + "\n")
         dateDiffDays = abs(dateDiff / (24*60*60))
+        log.write("dateDiffDays " + str(dateDiffDays) + "\n")
         length_of_day_dec = rot_speed * 3600.0 / 86400.0
+        log.write("length_of_day_dec " + str(length_of_day_dec) + "\n")
         julianDate = dateDiffDays
+        log.write("julianDate " + str(julianDate) + "\n")
         totalCycles = julianDate / length_of_day_dec
+        log.write("totalCycles " + str(totalCycles) + "\n")
         currentCycleDez = totalCycles % 1
+        log.write("currentCycleDez " + str(currentCycleDez) + "\n")
         currentCycleDeg = (currentCycleDez * 360)
+        log.write("currentCycleDeg " + str(currentCycleDeg) + "\n")
         currentCycleAngle = rot_adj + currentCycleDeg
         if (dateDiff < 0):
             currentCycleAngle = 360 - currentCycleAngle
+        log.write("currentCycleAngle " + str(currentCycleAngle) + "\n")
         reversed_angle = 360 - currentCycleAngle
+        log.write("reversed_angle " + str(reversed_angle) + "\n")
         currentCycleRadians = reversed_angle / 180 * math.pi
-        print(coords["x"] * math.sin((currentCycleRadians)))
-        print( coords["y"] * math.cos((currentCycleRadians)))
+        log.write("currentCycleRadians " + str(currentCycleRadians) + "\n")
         return {
             "x": (coords["x"] * math.cos(currentCycleRadians) - coords["y"] * math.sin(currentCycleRadians)) * -1,
             "y": (coords["x"] * math.sin(currentCycleRadians) + coords["y"] * math.cos(currentCycleRadians)) * -1,
@@ -65,6 +78,7 @@ def remove_rotation(coords):
 
 
 with open(file) as f:
+    log.write("parsing " + file + "\n")
     lines = f.readlines()
     for line in lines:
         s = line.split(' ')
@@ -84,9 +98,11 @@ with open(file) as f:
                 coords_struct["z"] = planet_z * 1000 - i
                 #print(coords_struct)
                 res = remove_rotation(coords_struct)
+                log.write("final " + str(res) + "\n")
                 x.append(res["x"])
                 y.append(res["y"])
                 z.append(res["z"])
+    log.close()
     f.close()
 print(x)
 print(y)
