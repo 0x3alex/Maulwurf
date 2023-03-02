@@ -1,6 +1,6 @@
 .idea
-dead_end.txt
-cave_trace.txt
-test.txt
-straight_down.txt
-flat_test.txt
+TerrainMapper/dead_end.txt
+TerrainMapper/cave_trace.txt
+TerrainMapper/test.txt
+TerrainMapper/straight_down.txt
+TerrainMapper/flat_test.txt
