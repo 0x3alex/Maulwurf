@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 
 def parse(list,axis,planet,json_obj):
     f = json.load(open("db.json"))
+    print(axis)
     if axis == "timestamp":
         list.append(time.mktime(time.strptime(json_obj["date"] + " " + json_obj["time"], '%Y-%m-%d %H:%M')))
     elif axis == "temperature":
@@ -25,7 +26,7 @@ if len(sys.argv) < 8:
     exit("visualizer.py <file> <planet> <location> <value_for_x_axis> "
          "<value_for_y_axis> <value_for_z_axis> <color_reference_axis>")
 
-file = "test_data.json"
+file = sys.argv[1]
 planet = sys.argv[2]
 location = sys.argv[3]
 
@@ -40,7 +41,7 @@ with open("db.json") as db:
     db.close()
 
 
-x_idx = sys.argv[4] if sys.argv[4] in valid_axis_values else exit("Not valid 4")
+x_idx = sys.argv[4] if sys.argv[4] in valid_axis_values else exit(sys.argv[4] + " - Not valid 4")
 y_idx = sys.argv[5] if sys.argv[5] in valid_axis_values else exit("Not valid 5")
 z_idx = sys.argv[6] if sys.argv[6] in valid_axis_values else exit("Not valid 6")
 color_reference = "" if sys.argv[7] == "x" or sys.argv[7] == "y" or sys.argv[7] == "z" \

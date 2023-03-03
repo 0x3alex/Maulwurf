@@ -15,10 +15,10 @@ with open(file) as f:
     for line in lines:
         obj = {}
         if current_line == 1:
-            params = line.replace("\"","").replace(" ","_").lower().strip().split(",")
+            params = line.replace("\"","").replace(" ","_").replace("'","").lower().strip().split(",")
             current_line = current_line+1
             continue
-        line = line.replace("\"", "").lower().strip()
+        line = line.replace("\"", "").replace("'","").lower().strip()
         splitted = line.split(",")
         for idx,val in enumerate(params):
             obj[val] = splitted[idx]
