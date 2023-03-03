@@ -5,14 +5,14 @@ import sys
 import keyboard
 import ntplib
 import pyperclip
-from pynput.keyboard import KeyCode, Listener, Key
+from pynput.keyboard import KeyCode
 import time
 from pynput import keyboard as k
 
-#if len(sys.argv) < 2:
-#    exit("Specify the planet")
+if len(sys.argv) < 2:
+    exit("Specify the planet")
 
-planet = "daymar"
+planet = sys.argv[1]
 
 x = []
 y = []
@@ -22,7 +22,7 @@ db = open('db.json')
 data = json.load(db)
 
 rot_speed = data[planet]["rot_speed"]
-rot_adj = 30.7939223  # todo: move to db.json for each planet
+rot_adj =30.5679523  # 30.7939223  # todo: move to db.json for each planet
 radius = data[planet]["radius"]
 planet_x = data[planet]["X"]
 planet_y = data[planet]["Y"]
@@ -30,12 +30,12 @@ planet_z = data[planet]["Z"]
 
 
 # The key combination to check
-COMBINATION = {k.Key.cmd, KeyCode.from_char('f')}
+COMBINATION = {KeyCode.from_char('g')}
 
 # The currently active modifiers
 current = set()
 
-f = open('cave_trace.txt', 'a')
+f = open(planet+'_trace.txt', 'a')
 
 c = ntplib.NTPClient()
 response = c.request('europe.pool.ntp.org', version=3)
@@ -65,6 +65,7 @@ def on_press(key):
     if key in COMBINATION:
         current.add(key)
         if all(k in current for k in COMBINATION):
+            print("keys pressed!")
             keyboard.press_and_release('enter')
             time.sleep(1)
             keyboard.write("/showlocation", delay=0)
@@ -73,6 +74,8 @@ def on_press(key):
             time.sleep(.17)
             cb = pyperclip.paste()
             print("got raw point: " + cb)
+            print("added ntp offset of: " + str(response.offset))
+            print("OG time: " + str(time.time()))
             line = "t:" + str(time.time() + response.offset) + " " + cb
             s = line.split(' ')
             del s[1]
@@ -107,27 +110,3 @@ def on_release(key):
 
 with k.Listener(on_press=on_press, on_release=on_release) as listener:
     listener.join()
-
-'''def on_press(key):
-    if key in combination:
-        print(key)
-        currently_pressed.add(key)
-
-    if currently_pressed == combination:
-        is_pressed = True
-        print('pressed!')
-    if key == KeyCode.from_char('f'):
-        keyboard.press_and_release('enter')
-        time.sleep(1)
-        keyboard.write("/showlocation", delay=0)
-        time.sleep(1)
-        keyboard.press_and_release('enter')
-        cb = Tk().clipboard_get()
-        f.write("t:" + str(time.time()) + " " + cb + "\n")
-        print("saved x-y-z: " + cb)
-    if key == KeyCode.from_char('q'):
-        f.close()
-        exit(0)
-with Listener(on_press=on_press) as listener:
-    listener.join()
-'''

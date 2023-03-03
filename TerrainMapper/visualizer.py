@@ -14,9 +14,9 @@ with open(file) as f:
     lines = f.readlines()
     for line in lines:
         s = line.split(' ')
-        del s[1]
         coords_struct = {}
         for idx, i in enumerate(s):
+            print(line)
             i = float(i.split(':')[1].strip())
             if idx == 0:
                 coords_struct["t"] = i # time.time()
@@ -35,8 +35,11 @@ fig.canvas.manager.set_window_title("Maulwurf -> TerrainMapper")
 ax = plt.axes(projection='3d')
 ax.set_title("tracking " + file)
 N = 5  # some number > 1 that stretches z axis as you desire
-#ax.set_box_aspect((25, 10, 10)) # xy aspect ratio is 1:1, but stretches z axis
+ax.set_box_aspect((50, 50, 10)) # xy aspect ratio is 1:1, but stretches z axis
 plt.xlabel("X")
 plt.ylabel("Y")
-plt.plot(x, y, z, color="red", marker='o')
+print(x)
+print(y)
+print(z)
+plt.plot(x, y, z)
 plt.show()

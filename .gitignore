@@ -1,6 +1,6 @@
 .idea
 TerrainMapper/dead_end.txt
-TerrainMapper/cave_trace.txt
+TerrainMapper/cave_trace_long.txt
 TerrainMapper/test.txt
 TerrainMapper/straight_down.txt
 TerrainMapper/flat_test.txt
@@ -8,3 +8,4 @@ MeteorologyMapper/converted_data.json
 MeteorologyMapper/daymar_data.txt
 MeteorologyMapper/test_data.json
 TerrainMapper/cave_trace_long.txt
+TerrainMapper/daymar_trace.txt
