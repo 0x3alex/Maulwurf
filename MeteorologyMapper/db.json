@@ -1,0 +1,21 @@
+{
+  "daymar": {
+    "condition": {
+      "Clear": "0",
+      "Wind": "1",
+      "Overcast":  "2",
+      "Dusty": "3"
+    },
+    "visibility": {
+      "Good / Clear": "0",
+      "Normal": "1",
+      "Bad / Poor": "2"
+    },
+    "sun_position": {
+      "Day":  "0",
+      "Night":  "1",
+      "Sunrise":  "2",
+      "Sunset": "3"
+    }
+  }
+}
